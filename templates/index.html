@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" 
+    href="D:\pythonProjects\WEB\static\css\bootstrap.css">
+    <title>Jobs table</title>
+    </head>
+    <body>
+    <h1>Works log</h1>
+    
+    {% for job in jobs %}
+    <h2>{{ job[0] }}</h2>
+    <table class="table">
+        <thead>
+                <tr class="table-secondary" role="columnheader">
+                    {% for head in ["Title of activity", "Team leader", "Duration", "List of collaborators", "is finished"] %}
+                    <th>{{ head }}</th>
+                    {% endfor %}
+                </tr>
+        </thead>
+        <tbody>
+            <tr>
+                {% for val in job[1:] %}
+                    {% if job[-1] == val %}
+                        <td class="table-danger" role="cell">{{ val }}</td>
+                    {% else %}
+                        <td class="table-primary" role="cell">{{ val }}</td>
+                    {% endif %}
+                {% endfor %}
+            </tr>
+        </tbody>
+    </table>
+    {%endfor%}
+    </body>
+</html>
